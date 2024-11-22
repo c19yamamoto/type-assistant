@@ -1,13 +1,18 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { TypeAssistantPresenter } from "./presenter";
 
-const OPENAI_API_KEY = "sk-...";
+const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+const GPT_MODEL = import.meta.env.VITE_GPT_MODEL;
 
 export const TypeAssistantContainer = () => {
   const [currentText, setCurrentText] = useState<string>("");
   const [generatedText, setGeneratedText] = useState<string>("");
   const [timer, setTimer] = useState<number | null>(null);
   const [tabPressed, setTabPressed] = useState<boolean>(false);
+
+  if (!OPENAI_API_KEY) {
+    return <h1>OpenAI API key not found</h1>
+  }
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -50,7 +55,7 @@ export const TypeAssistantContainer = () => {
   const handleGeneration = async (text: string) => {
     try {
       const APIBody = {
-        model: "gpt-3.5-turbo",
+        model: GPT_MODEL,
         messages: [
           { role: "system", content: "You are a helpful assistant." },
           {

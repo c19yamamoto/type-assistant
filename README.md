@@ -1,19 +1,17 @@
 # TypeAssistant
 
-Open AI API を使用したタイピング補助ツールです。
+~~Open AI API を使用したタイピング補助ツールです。~~
+
+Open AI API を使用して、入力中の文章を補完しながらタイピングできたらいいなー、と思って作ったのですが、よく考えると GitHub Copilot で賄えました。
+
+成仏させてください。
 
 ## Install
 
 ```bash
-$ git clone git@github.com:c19yamamoto/type-assistant.git
+$ gh repo clone c19yamamoto/type-assistant
 $ cd type-assistant
-$ npm install
+$ npm i
 ```
 
-## Usage
-
-OpenAI API キーを環境変数に設定し、次のコマンドでアプリケーションを起動します。
-
-```bash
-$ npm run dev
-```
+`.env.development` に `OPENAI_API_KEY` を設定してください。
